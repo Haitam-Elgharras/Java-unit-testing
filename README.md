@@ -28,3 +28,9 @@ a test is considered successful if it completes without any failures or errors.
 ## Starting with JUnit
 1. **Assertions**: JUnit provides a set of assertions that you can use to test the output of your code. 
     For example, you can use the `assertEquals()` method to test if two values are equal. if an assertion fails, the test is considered a failure.
+2. **Annotations**: JUnit provides a set of annotations that you can use to define your test methods. 
+- `@Test`: This annotation is used to mark a method as a test method.
+- `@BeforeEach`: This annotation is used to mark a method that should be run before each test method.
+- `@AfterEach`: This annotation is used to mark a method that should be run after each test method.
+- `@BeforeAll`: This annotation is used to mark a method that should be run before all test methods(before starting the tests).
+- `@AfterAll`: This annotation is used to mark a method that should be run after all test methods(after finishing the tests).
