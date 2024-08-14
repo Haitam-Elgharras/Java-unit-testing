@@ -1,1 +1,17 @@
-"# Java-unit-testing" 
+# Unit testing In Java (JUnit & Mockito)
+## Introduction to Unit Testing
+Unit testing is the process where you test the smallest functional unit of code in an application. In Java, the smallest functional unit of code is a method. 
+Unit testing is important because it helps you to identify bugs early in the development process and also helps you to ensure that your code is working as expected.
+Unit testing is also important because it helps you to write better code by forcing you to think about how your code should work before you write it.
+Unit testing is also important because it helps you to write more maintainable code by making it easier to refactor your code without breaking it or testing it with every change.
+
+## What is JUnit?
+Junit is a unit testing framework for Java that helps you to write and run unit tests.
+Junit provides a set of annotations and assertions that you can use to write unit tests for your code.
+Junit also provides a test runner that you can use to run your unit tests and generate reports on the results.
+Junit is widely used in the Java community and is the de facto standard for unit testing in Java.
+a test is considered successful if it completes without any failures or errors.
+
+## Starting with JUnit
+1. **Assertions**: JUnit provides a set of assertions that you can use to test the output of your code. 
+    For example, you can use the `assertEquals()` method to test if two values are equal. if an assertion fails, the test is considered a failure.
