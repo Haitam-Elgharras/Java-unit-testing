@@ -4,15 +4,22 @@ import com.in28minutes.Mockito.business.TodoBusinessImpl;
 import com.in28minutes.Mockito.data.api.TodoService;
 import com.in28minutes.Mockito.data.api.TodoServiceImplStub;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 class TodoBusinessImplTest {
+
+    // argument captor
+    ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
 
     @Test
     void retrieveTodosRelatedToSpring() {
@@ -60,7 +67,7 @@ class TodoBusinessImplTest {
     void deleteNotRelatedToSpring_usingBDD() {
         // Given
         TodoService todoServiceMock = mock(TodoService.class);
-        when(todoServiceMock.retrieveTodos("user_learning_spring")).thenReturn(
+        given(todoServiceMock.retrieveTodos("user_learning_spring")).willReturn(
                 Arrays.asList("Learn Spring MVC", "Learn Spring Boot", "Learn Java"));
 
         TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoServiceMock);
@@ -73,6 +80,40 @@ class TodoBusinessImplTest {
         then(todoServiceMock).should().deleteTodo("Learn Java");
         then(todoServiceMock).should(times(1)).deleteTodo("Learn Java");
         then(todoServiceMock).should(never()).deleteTodo("Learn Spring MVC");
+    }
+
+    @Test
+    void deleteNotRelatedToSpring_usingBDD_argumentCapture() {
+        // Given
+        TodoService todoServiceMock = mock(TodoService.class);
+        given(todoServiceMock.retrieveTodos("user_learning_spring")).willReturn(
+                Arrays.asList("Learn Spring MVC", "Learn Spring Boot", "Learn Java"));
+
+        TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoServiceMock);
+
+        // When
+        todoBusinessImpl.deleteTodosNotRelatedToSpring("user_learning_spring");
+
+        // Then
+        then(todoServiceMock).should().deleteTodo(stringArgumentCaptor.capture());
+        assertThat(stringArgumentCaptor.getValue(), is("Learn Java"));
+    }
+
+    @Test
+    void deleteNotRelatedToSpring_usingBDD_list_argumentCapture() {
+        // Given
+        TodoService todoServiceMock = mock(TodoService.class);
+        given(todoServiceMock.retrieveTodos("user_learning_spring")).willReturn(
+                Arrays.asList("Learn Spring MVC", "Learn docker", "Learn Java"));
+
+        TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoServiceMock);
+
+        // When
+        todoBusinessImpl.deleteTodosNotRelatedToSpring("user_learning_spring");
+
+        // Then
+        then(todoServiceMock).should(times(2)).deleteTodo(stringArgumentCaptor.capture());
+        assertThat(stringArgumentCaptor.getAllValues().size(), is(2));
     }
 
 }
