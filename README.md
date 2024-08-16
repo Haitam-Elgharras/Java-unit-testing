@@ -38,7 +38,7 @@ a test is considered successful if it completes without any failures or errors.
 
 
 # Getting Started with Mockito
-### Stub: Definition, Advantages, and Disadvantages
+### 1. Stub: Definition, Advantages, and Disadvantages
 
 A **stub** is a simple, temporary implementation of an interface used in unit testing to simulate the behavior of a dependency.
 
@@ -53,3 +53,16 @@ A **stub** is a simple, temporary implementation of an interface used in unit te
 3. **Complexity**: Becomes cumbersome for dynamic or complex behavior.
 
 Stubs are best for simple tests; for more complex cases, mocks are often a better choice.
+
+### 2. Mocks, Mockito, and the Advantages of Mocking
+
+**Mocks**: A mock is a test double used in unit testing to simulate the behavior of real objects. Unlike stubs, mocks allow for more dynamic interactions, such as verifying how many times a method was called.
+
+**Mockito**: Mockito is a popular Java-based framework used for creating mocks. It simplifies the process of creating mock objects and setting up their expected behavior during tests.
+
+**Advantages of Mocking**:
+1. **Flexibility**: Easily simulate different scenarios without hardcoding responses.
+2. **Verification**: Check interactions with the mock, like method calls, to ensure correct behavior.
+3. **Isolation**: Test components in isolation from external dependencies, leading to more reliable and faster tests.
+
+Mocking, especially with Mockito, provides a powerful toolset for ensuring that your tests are both comprehensive and maintainable.
