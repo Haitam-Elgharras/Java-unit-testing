@@ -9,8 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class TodoBusinessImplTest {
 
@@ -30,7 +29,6 @@ class TodoBusinessImplTest {
         TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoServiceMock);
 
         assertEquals(3, todoBusinessImpl.retrieveTodosRelatedToSpring("user_learning_spring").size());
-
     }
 
     @Test
@@ -42,4 +40,19 @@ class TodoBusinessImplTest {
 
         assertEquals(0, todoBusinessImpl.retrieveTodosRelatedToSpring("empty").size());
     }
+
+    @Test
+    void deleteNotRelatedToSpring_usingMock() {
+        TodoService todoServiceMock = mock(TodoService.class);
+        when(todoServiceMock.retrieveTodos("user_learning_spring")).thenReturn(
+                Arrays.asList("Learn Spring MVC", "Learn Spring Boot", "Learn Java"));
+
+        TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoServiceMock);
+
+        todoBusinessImpl.deleteTodosNotRelatedToSpring("user_learning_spring");
+
+        verify(todoServiceMock, times(1)).deleteTodo("Learn Java");
+        verify(todoServiceMock, never()).deleteTodo("Learn Spring MVC");
+    }
+
 }

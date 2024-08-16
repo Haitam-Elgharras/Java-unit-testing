@@ -92,3 +92,13 @@ Mocking, especially with Mockito, provides a powerful toolset for ensuring that 
 - **Then:** Use `assertThat()` for more readable assertions compared to traditional `assertEquals()`.
 
 This method of organizing tests helps to make them more readable, structured, and aligned with user stories. You can practice converting existing tests to the BDD style to gain a deeper understanding.
+
+
+### Verifying Calls in Mockito
+- **Purpose**: Verification in Mockito is used to check if a specific method on a mock object was called during testing.
+- **How to Verify**:
+  - Use `verify(mockObject).methodName(argument)` to check if a method was called with a specific argument.
+  - `verify(mockObject, times(n)).methodName(argument)` checks if the method was called `n` times.
+  - `verify(mockObject, never()).methodName(argument)` ensures the method was not called with the specified argument.
+  - `verify(mockObject, atLeast(n)).methodName(argument)` ensures the method was called at least `n` times.
+- **Common Use Case**: Useful for testing methods that do not return a value but have side effects, such as modifying data or invoking other methods.
