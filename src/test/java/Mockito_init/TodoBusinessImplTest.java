@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 class TodoBusinessImplTest {
@@ -53,6 +54,25 @@ class TodoBusinessImplTest {
 
         verify(todoServiceMock, times(1)).deleteTodo("Learn Java");
         verify(todoServiceMock, never()).deleteTodo("Learn Spring MVC");
+    }
+
+    @Test
+    void deleteNotRelatedToSpring_usingBDD() {
+        // Given
+        TodoService todoServiceMock = mock(TodoService.class);
+        when(todoServiceMock.retrieveTodos("user_learning_spring")).thenReturn(
+                Arrays.asList("Learn Spring MVC", "Learn Spring Boot", "Learn Java"));
+
+        TodoBusinessImpl todoBusinessImpl = new TodoBusinessImpl(todoServiceMock);
+
+        // When
+        todoBusinessImpl.deleteTodosNotRelatedToSpring("user_learning_spring");
+
+        // Then
+        // this is similar to verify(todoServiceMock).deleteTodo("Learn Java");
+        then(todoServiceMock).should().deleteTodo("Learn Java");
+        then(todoServiceMock).should(times(1)).deleteTodo("Learn Java");
+        then(todoServiceMock).should(never()).deleteTodo("Learn Spring MVC");
     }
 
 }
