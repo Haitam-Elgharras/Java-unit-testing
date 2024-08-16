@@ -34,3 +34,22 @@ a test is considered successful if it completes without any failures or errors.
 - `@AfterEach`: This annotation is used to mark a method that should be run after each test method.
 - `@BeforeAll`: This annotation is used to mark a method that should be run before all test methods(before starting the tests).
 - `@AfterAll`: This annotation is used to mark a method that should be run after all test methods(after finishing the tests).
+- `@Suite`: This annotation is used to mark a class as a suite of test classes.
+
+
+# Getting Started with Mockito
+### Stub: Definition, Advantages, and Disadvantages
+
+A **stub** is a simple, temporary implementation of an interface used in unit testing to simulate the behavior of a dependency.
+
+**Advantages:**
+1. **Isolation**: Allows testing without relying on external components.
+2. **Simplicity**: Easy to create for basic scenarios.
+3. **Speed**: Fast execution since no external resources are involved.
+
+**Disadvantages:**
+1. **Limited Flexibility**: Hardcoded responses make it difficult to test varied scenarios.
+2. **Maintenance**: Requires updates as the system evolves.
+3. **Complexity**: Becomes cumbersome for dynamic or complex behavior.
+
+Stubs are best for simple tests; for more complex cases, mocks are often a better choice.

@@ -1,3 +1,5 @@
+package JUnit_init;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

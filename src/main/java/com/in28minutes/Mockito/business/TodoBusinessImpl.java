@@ -11,7 +11,7 @@ public class TodoBusinessImpl {
     // Dependency of our SUT
     private TodoService todoService;
 
-    TodoBusinessImpl(TodoService todoService) {
+    public TodoBusinessImpl(TodoService todoService) {
         this.todoService = todoService;
     }
 

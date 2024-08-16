@@ -1,3 +1,5 @@
+package JUnit_init;
+
 import com.in28minutes.JUnit.StringHelper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
