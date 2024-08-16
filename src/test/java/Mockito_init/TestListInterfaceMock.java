@@ -4,9 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -55,5 +57,48 @@ public class TestListInterfaceMock {
         when(listMock.get(anyInt())).thenThrow(new RuntimeException("Something"));
 
         assertThrows(RuntimeException.class, () -> listMock.get(0));
+    }
+
+    // testing calling unstubbed methods
+    @Test
+    public void testListGet_unstubbedMethods() {
+        List listMock = mock(List.class);
+
+        assertNull(listMock.get(0));
+        assertEquals(0, listMock.size());
+
+        assertFalse(listMock.isEmpty());
+
+        assertFalse(listMock.contains("in28Minutes"));
+
+        assertEquals(0, listMock.indexOf("in28Minutes"));
+    }
+
+    // Playground for BDD Mockito
+    @Test
+    public void testListGet_BDD() {
+        // Given
+        List listMock = mock(List.class);
+        given(listMock.get(anyInt())).willReturn("in28Minutes");
+
+        // When
+        String firstElement = (String) listMock.get(0);
+
+        // Then
+        assertThat(firstElement, is("in28Minutes"));
+    }
+
+    @Test
+    public void testListGet_throwException_BDD() {
+        // Given
+        List listMock = mock(List.class);
+
+        given(listMock.get(anyInt())).willReturn(new RuntimeException("Something"));
+
+        // When
+        Runnable listMockCall = () -> listMock.get(0);
+
+        // Then
+        assertThrows(RuntimeException.class, listMockCall::run);
     }
 }

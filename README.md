@@ -38,7 +38,7 @@ a test is considered successful if it completes without any failures or errors.
 
 
 # Getting Started with Mockito
-### 1. Stub: Definition, Advantages, and Disadvantages
+## 1. Stub: Definition, Advantages, and Disadvantages
 
 A **stub** is a simple, temporary implementation of an interface used in unit testing to simulate the behavior of a dependency.
 
@@ -54,7 +54,7 @@ A **stub** is a simple, temporary implementation of an interface used in unit te
 
 Stubs are best for simple tests; for more complex cases, mocks are often a better choice.
 
-### 2. Mocks, Mockito, and the Advantages of Mocking
+## 2. Mocks, Mockito, and the Advantages of Mocking
 
 **Mocks**: A mock is a test double used in unit testing to simulate the behavior of real objects. Unlike stubs, mocks allow for more dynamic interactions, such as verifying how many times a method was called.
 
@@ -66,3 +66,29 @@ Stubs are best for simple tests; for more complex cases, mocks are often a bette
 3. **Isolation**: Test components in isolation from external dependencies, leading to more reliable and faster tests.
 
 Mocking, especially with Mockito, provides a powerful toolset for ensuring that your tests are both comprehensive and maintainable.
+
+## 3. BDD (Behavior-Driven Development) with Mockito
+
+**Behavior-Driven Development (BDD)** is a development approach that involves writing tests in a way that focuses on the behavior of an application from the end user's perspective. It bridges the gap between technical and non-technical team members by using plain language structured around user stories.
+
+### **Why Use BDD?**
+- **Collaboration:** Enhances communication between developers, testers, and business stakeholders.
+- **Clarity:** Provides a clear understanding of the expected behavior of a system.
+- **Test Automation:** BDD tests can be automated, which ensures the code meets the business requirements.
+
+### **Given-When-Then Structure:**
+- **Given:** Sets up the initial context or preconditions (e.g., initial state or data setup).
+- **When:** Describes the action or event that triggers the behavior.
+- **Then:** Defines the expected outcome or post-condition resulting from the action.
+
+### **Key Notes:**
+1. **Combination of Matchers and Hardcoded Values:** Mockito does not allow mixing matchers (like `anyInt()`) with hardcoded values (e.g., `5`). You must be consistent by either using matchers or specific values entirely.
+2. **Mocking List Methods:** Practice mocking various methods of a list and observe how they behave, particularly when unstubbed methods are called (e.g., returning default values like `0` for integers).
+3. **Unstubbed Method Behavior:** Understand that unstubbed methods in a mock return default values such as `null` for objects, `false` for booleans, and `0` for integers.
+
+### **Implementing BDD in Mockito:**
+- **Given:** Use `BDDMockito.given()` to set up the preconditions.
+- **When:** This is the action under test.
+- **Then:** Use `assertThat()` for more readable assertions compared to traditional `assertEquals()`.
+
+This method of organizing tests helps to make them more readable, structured, and aligned with user stories. You can practice converting existing tests to the BDD style to gain a deeper understanding.
