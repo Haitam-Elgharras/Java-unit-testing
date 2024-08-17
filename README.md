@@ -102,3 +102,27 @@ This method of organizing tests helps to make them more readable, structured, an
   - `verify(mockObject, never()).methodName(argument)` ensures the method was not called with the specified argument.
   - `verify(mockObject, atLeast(n)).methodName(argument)` ensures the method was called at least `n` times.
 - **Common Use Case**: Useful for testing methods that do not return a value but have side effects, such as modifying data or invoking other methods.
+
+
+## Spy vs. Mock
+
+- **Mock**: A mock is a dummy implementation of a class or interface used in testing. When you mock an object, all methods of the mock object return default values unless explicitly stubbed. The mock does not invoke any real behavior from the underlying object; it's entirely synthetic.
+
+- **Spy**: A spy is a partial mock that allows you to track and alter the behavior of a real object while preserving the original functionality for the parts not explicitly stubbed. Spies enable you to monitor method calls on the real object and selectively override specific methods.
+
+#### Key Differences:
+- **Behavior**:
+  - *Mock*: Does not use the real object; all interactions are artificial.
+  - *Spy*: Uses the real object but allows selective stubbing of methods.
+
+- **Usage**:
+  - *Mock*: Used when you want complete control over the object's behavior without relying on any real logic.
+  - *Spy*: Used when you need to partially mock an object while still using its real methods.
+
+- **Complexity**:
+  - *Mock*: Simpler and easier to maintain because the entire object is mocked.
+  - *Spy*: More complex due to the combination of real and mocked behavior, which can make the code harder to understand and maintain.
+
+#### Why Avoid Spies?
+- **Maintenance Complexity**: Mixing real and mocked behavior can lead to confusing and harder-to-maintain code, especially in large projects.
+- **Use in Legacy Code**: Spies are more appropriate for legacy systems where you cannot modify the original code. In well-designed systems, relying on mocks is generally preferred.

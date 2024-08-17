@@ -21,6 +21,7 @@ import static org.mockito.BDDMockito.then;
 import static org.mockito.Mockito.*;
 
 
+//register multiple extensions @ExtendWith({MockitoExtension.class,SpringExtension.class})
 @ExtendWith(MockitoExtension.class)
 class TodoBusinessImplMockitoAnnotationsTest {
 

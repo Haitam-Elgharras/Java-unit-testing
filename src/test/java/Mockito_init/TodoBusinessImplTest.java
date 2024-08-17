@@ -6,6 +6,7 @@ import com.in28minutes.Mockito.data.api.TodoServiceImplStub;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -116,5 +117,22 @@ class TodoBusinessImplTest {
         then(todoServiceMock).should(times(2)).deleteTodo(stringArgumentCaptor.capture());
         assertThat(stringArgumentCaptor.getAllValues().size(), is(2));
     }
+
+    @Test
+    void try_spy() {
+        // with spy we are really working with a real implementation
+        List list = spy(ArrayList.class);
+        list.add("in28Minutes");
+        list.add("in28Minutes");
+
+        assertEquals(2, list.size());
+
+        // if we mock a method then it will start behaving like a mock
+        when(list.size()).thenReturn(5);
+
+        assertEquals(5, list.size());
+
+    }
+
 
 }
