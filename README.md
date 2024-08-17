@@ -126,3 +126,14 @@ This method of organizing tests helps to make them more readable, structured, an
 #### Why Avoid Spies?
 - **Maintenance Complexity**: Mixing real and mocked behavior can lead to confusing and harder-to-maintain code, especially in large projects.
 - **Use in Legacy Code**: Spies are more appropriate for legacy systems where you cannot modify the original code. In well-designed systems, relying on mocks is generally preferred.
+
+
+## Understanding Mockito's Design Choices
+
+This design choice is rooted in promoting good object-oriented design and testing practices:
+
+1. **Mockito's Focus**: Mockito encourages testing public interfaces rather than private methods, as this aligns with the principles of good unit testing.
+
+2. **Limitations**: Mockito does not allow mocking of final classes, private methods, or static methods. These limitations are intentional to prevent poor design practices like over-reliance on static methods, which are generally considered bad in object-oriented design.
+
+3. **Alternatives**: While Mockito itself doesn't support these features, other frameworks like PowerMock can be used alongside Mockito to mock final classes or static methods.
