@@ -171,6 +171,16 @@ PowerMock is a powerful extension for Mockito that allows developers to mock sta
 Invoking static, private methods, or constructors is considered bad practice in modern object-oriented design, as it can lead to tight coupling and hinder testability. However, in certain scenarios, such as working with legacy code or third-party libraries, PowerMock can be a valuable tool for writing comprehensive unit tests.
 
 ## Useful Resources:
-- [FIRST](https://medium.com/pragmatic-programmers/unit-tests-are-first-fast-isolated-repeatable-self-verifying-and-timely-a83e8070698e)
-- [Patterns](http://xunitpatterns.com)
-- [How to write good tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests)
+#### [FIRST](https://medium.com/pragmatic-programmers/unit-tests-are-first-fast-isolated-repeatable-self-verifying-and-timely-a83e8070698e)
+
+  - **Fast**: Unit tests should run quickly because the faster they are, the more often we can run them, leading to higher productivity and quicker feedback during development.
+  - **Isolated**: Each test should be independent and not rely on other tests or external dependencies.
+  - **Repeatable**: Tests should be deterministic, meaning they give the same result every time, regardless of external factors. 
+  - **Self-verifying**: Tests should automatically indicate pass or fail without manual checking.
+  - **Timely**: Tests should be written at the right time, ideally before the code they are testing, to ensure they guide development and catch issues early.
+  These principles ensure that unit tests are efficient and reliable.
+
+#### [Patterns](http://xunitpatterns.com)
+#### [How to write good tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests)
+#### [One assert per test](https://www.artima.com/weblogs/viewpost.jsp?thread=35578)
+#### [Test multithreaded code](https://stackoverflow.com/questions/12159/how-should-i-unit-test-multithreaded-code)
