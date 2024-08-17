@@ -171,6 +171,6 @@ PowerMock is a powerful extension for Mockito that allows developers to mock sta
 Invoking static, private methods, or constructors is considered bad practice in modern object-oriented design, as it can lead to tight coupling and hinder testability. However, in certain scenarios, such as working with legacy code or third-party libraries, PowerMock can be a valuable tool for writing comprehensive unit tests.
 
 ## Useful Resources:
-- [FIRST](https://pragprog.com/magazines/2012-01/unit-tests-are-first)
+- [FIRST](https://medium.com/pragmatic-programmers/unit-tests-are-first-fast-isolated-repeatable-self-verifying-and-timely-a83e8070698e)
 - [Patterns](http://xunitpatterns.com)
 - [How to write good tests](https://github.com/mockito/mockito/wiki/How-to-write-good-tests)
