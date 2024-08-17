@@ -1,18 +1,5 @@
 # Unit testing In Java (JUnit & Mockito)
 
-## Key Principles for Writing Good Unit Tests
-
-When writing unit tests, two essential principles should guide your approach:
-
-### 1. **Readability**: 
-A unit test should be easily understandable at a glance. The test's purpose, what it is verifying, and the expected outcome should be clear. This involves giving meaningful names to test methods that reflect the method being tested, the scenario, and the expected result. Additionally, only the values relevant to the test should be highlighted, making it obvious what the test is validating.
-
-### 2. **Failure on Logic Errors Only**:
-A unit test should fail only when there is an actual problem with the code's logic. Tests should not fail due to external factors like changes in a database or other dependencies outside the developer's control. To ensure this, external dependencies should be mocked, allowing the test to focus solely on the logic it is designed to verify.
-
-By adhering to these principles—ensuring readability and isolating tests to fail only on real logic errors—you can create robust and reliable unit tests. These foundations are crucial, and additional best practices and resources can build upon them to further improve the quality of your testing.
-
-
 ## Introduction to Unit Testing
 1. **Overview**:
 Unit testing is the process where you test the smallest functional unit of code in an application. In Java, the smallest functional unit of code is a method. 
@@ -31,6 +18,18 @@ some examples are:
 - ``Should_ExpectedBehavior_When_StateUnderTest``
   - cons: duplicates `should` and `when`, long name
   - example: Should_ThrowException_When_AgeLessThan18
+
+ ## Key Principles for Writing Good Unit Tests
+
+When writing unit tests, two essential principles should guide your approach:
+
+### 1. **Readability**: 
+A unit test should be easily understandable at a glance. The test's purpose, what it is verifying, and the expected outcome should be clear. This involves giving meaningful names to test methods that reflect the method being tested, the scenario, and the expected result. Additionally, only the values relevant to the test should be highlighted, making it obvious what the test is validating.
+
+### 2. **Failure on Logic Errors Only**:
+A unit test should fail only when there is an actual problem with the code's logic. Tests should not fail due to external factors like changes in a database or other dependencies outside the developer's control. To ensure this, external dependencies should be mocked, allowing the test to focus solely on the logic it is designed to verify.
+
+By adhering to these principles—ensuring readability and isolating tests to fail only on real logic errors—you can create robust and reliable unit tests. These foundations are crucial, and additional best practices and resources can build upon them to further improve the quality of your testing.
 
 ## What is JUnit?
 Junit is a unit testing framework for Java that helps you to write and run unit tests.
