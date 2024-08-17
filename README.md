@@ -137,3 +137,20 @@ This design choice is rooted in promoting good object-oriented design and testin
 2. **Limitations**: Mockito does not allow mocking of final classes, private methods, or static methods. These limitations are intentional to prevent poor design practices like over-reliance on static methods, which are generally considered bad in object-oriented design.
 
 3. **Alternatives**: While Mockito itself doesn't support these features, other frameworks like PowerMock can be used alongside Mockito to mock final classes or static methods.
+
+
+## PowerMock and Mockito Integration:
+
+PowerMock is a powerful extension for Mockito that allows developers to mock static, private methods and constructors, a feature not supported by Mockito alone. This integration is useful when dealing with legacy code or situations where static methods need to be isolated for unit testing.
+
+**Key Steps:**
+
+1. **Dependency Setup**: To use PowerMock with Mockito, specific dependencies (`powermock-api-mockito2` and `powermock-module-junit4`) must be added to the project. These dependencies enable PowerMock's functionality within the Mockito framework.
+
+2. **Creating the Test Environment**: A typical scenario involves a class that calls a static method from another class. This static method may need to be mocked, especially if it interacts with external systems or performs complex logic that you don't want to invoke in your unit test.
+
+3. **Using PowerMock**: With PowerMock, you can easily mock static methods by using `PowerMockRunner` and setting up the test environment. The static method can be mocked to return a specific value, ensuring that your tests focus only on the behavior you want to verify.
+
+4. **JUnit Compatibility**: It's important to note that PowerMock integrates well with JUnit4, but is not compatible with JUnit5, which means developers should use JUnit4 when working with PowerMock and Mockito together.
+
+5. **Avoid using PowerMock unless necessary**: While PowerMock provides additional capabilities, it should be used judiciously. Overuse of PowerMock can lead to complex and brittle tests, making it harder to maintain and understand the test suite.
