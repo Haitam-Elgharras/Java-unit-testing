@@ -153,4 +153,6 @@ PowerMock is a powerful extension for Mockito that allows developers to mock sta
 
 4. **JUnit Compatibility**: It's important to note that PowerMock integrates well with JUnit4, but is not compatible with JUnit5, which means developers should use JUnit4 when working with PowerMock and Mockito together.
 
-5. **Avoid using PowerMock unless necessary**: While PowerMock provides additional capabilities, it should be used judiciously. Overuse of PowerMock can lead to complex and brittle tests, making it harder to maintain and understand the test suite.
+
+### Note:
+Invoking static, private methods, or constructors is considered bad practice in modern object-oriented design, as it can lead to tight coupling and hinder testability. However, in certain scenarios, such as working with legacy code or third-party libraries, PowerMock can be a valuable tool for writing comprehensive unit tests.
